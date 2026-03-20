@@ -1317,11 +1317,10 @@ void calPosition(int MTF_dx, int MTF_dy, float MTF_height) {
 	/*
 	*注：由于光流传感器读出数据有延时，用不同的低通滤波参数过滤光流传感器的读出延时
 	*/
-	LPF_MTF_dx = 0.25 * MTF_dx + 0.75 * LPF_MTF_dx; 
-	LPF_MTF_dy = 0.25 * MTF_dy + 0.75 * LPF_MTF_dy; // 光流Y轴速度低通滤波
+	LPF_MTF_dx = 0.15 * MTF_dx + 0.85 * LPF_MTF_dx; 
+	LPF_MTF_dy = 0.15 * MTF_dy + 0.85 * LPF_MTF_dy; // 光流Y轴速度低通滤波
 
-	//pitch_Delay_three_times(MTF_Raw_pitchRate, Delay_MTF_Raw_pitchRate); // 陀螺仪Y轴速度延时//单位°每秒
-	pitch_Delay_two_point_five_times(MTF_Raw_pitchRate, Delay_MTF_Raw_pitchRate); // 陀螺仪Y轴速度延时//单位°每秒
+	pitch_Delay_five_times(MTF_Raw_pitchRate, Delay_MTF_Raw_pitchRate); // 陀螺仪Y轴速度延时//单位°每秒
 	//roll_Delay_three_times(MTF_Raw_rollRate, Delay_MTF_Raw_rollRate); // 陀螺仪X轴速度延时
 	roll_Delay_three_times(MTF_Raw_rollRate, Delay_MTF_Raw_rollRate); // 陀螺仪X轴速度延时
 	LPF_MTF_Raw_pitchRate = 0.25* Delay_MTF_Raw_pitchRate + 0.75 * LPF_MTF_Raw_pitchRate; // 陀螺仪Y轴速度低通滤波
